@@ -1,0 +1,192 @@
+/* pages/orderInfo/orderInfo.wxss */
+.order_indo_page {
+    background-color: #efefef;
+    min-height: 100vh;
+    padding-top: 10rpx;
+    padding-bottom: 140rpx;
+    box-sizing: border-box;
+}
+
+.order_indo_page>.view {
+    margin: 25rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 25rpx;
+}
+
+.order_indo_page .address_box {
+    margin-top: 15rpx;
+    padding-bottom: 0;
+}
+
+.order_indo_page .address_box .title {
+    font-weight: bold;
+    font-size: 40rpx;
+    border-bottom: solid 1px #efefef;
+    padding-bottom: 10rpx;
+}
+
+.order_indo_page .address_box .addressButton {
+    display: flex;
+    justify-content: space-between;
+    height: 120rpx;
+    align-items: center;
+    color: #888;
+}
+
+.order_indo_page .address_box .addressButton .address {
+    font-size: 30rpx;
+    max-width: 600rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order_indo_page .order_remarks {
+    display: flex;
+    justify-content: space-between;
+    height: 70rpx;
+    align-items: center;
+}
+
+.order_indo_page .order_remarks .label {
+    width: 130rpx;
+    color: #333;
+}
+
+.order_indo_page .order_remarks .remarks {
+    display: flex;
+    align-items: center;
+    color: #888;
+}
+
+.order_indo_page .order_remarks .remarks text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 400rpx;
+    font-size: 30rpx;
+}
+
+.order_indo_page .order_list .title {
+    font-weight: bold;
+    font-size: 40rpx;
+    padding-bottom: 10rpx;
+}
+
+.order_indo_page .order_list .list {
+    display: flex;
+    justify-content: space-between;
+    height: 80rpx;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.order_indo_page .order_list .list .name {
+    width: 400rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 30rpx;
+}
+.order_indo_page .order_list .list .name .taste{
+    font-size: 25rpx;
+    color: #666;
+}
+.order_indo_page .order_list .list .name .taste text{
+    color: #fff;
+    padding: 0 10rpx;
+    border-radius: 5rpx;
+    background-color: #f0bf1d;
+}
+.order_indo_page .order_list .coupon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 0;
+    border-top: solid 1px #efefef;
+    border-bottom: solid 1px #efefef;
+    margin-top: 10rpx;
+}
+
+.order_indo_page .order_list .coupon .coupon_info {
+    display: flex;
+    color: #888;
+    font-size: 30rpx;
+    align-items: center;
+}
+
+.order_indo_page .order_list .subtotal {
+    padding: 40rpx 0 20rpx;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.order_indo_page .order_list .subtotal text {
+    font-weight: bold;
+    font-size: 40rpx;
+}
+
+.order_indo_page .payType .title {
+    font-weight: bold;
+    font-size: 40rpx;
+    padding-bottom: 10rpx;
+}
+
+.order_indo_page .payType .radio_list {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: 80rpx;
+    align-items: center;
+}
+
+.order_indo_page .payType .radio_list image {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.order_indo_page .payType .radio_list .label {
+    flex: 1;
+    padding-left: 20rpx;
+}
+
+.order_indo_page .payType .radio_list .noMoney {
+    position: absolute;
+    right: 70rpx;
+    font-size: 30rpx;
+    color: #888;
+}
+
+.order_indo_page .bottomButton {
+    margin: 0;
+    border-radius: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 80rpx;
+    align-items: center;
+    padding-bottom: 40rpx;
+}
+
+.order_indo_page .bottomButton .submit {
+    width: 200rpx;
+    height: 70rpx;
+    background-color: #e7951c;
+    color: #fff;
+    text-align: center;
+    line-height: 70rpx;
+    border-radius: 35rpx;
+    margin-left: 20rpx;
+}
+.order_indo_page .bottomButton .money text{
+    color: #e7951c;
+}
+.order_indo_page .bottomButton .money .money{
+    font-size: 40rpx;
+    font-weight: bold;
+}

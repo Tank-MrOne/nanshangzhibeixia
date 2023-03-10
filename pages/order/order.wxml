@@ -1,0 +1,162 @@
+<!--pages/order/order.wxml-->
+<view class="my_order">
+    <t-tabs sticky value="{{defaultValue}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs">
+        <t-tab-panel label="待支付" value="0">
+            <block wx:if="{{orderList.length > 0}}">
+                <view class="order_list" wx:for="{{orderList}}" wx:key="index" bindtap="pageToOrderInfo" data-id="{{item._id}}">
+                    <view class="line top">
+                        <image src="{{item.orders[0].img}}" class="image" mode="aspectFill"></image>
+                        <view class="list_info">
+                            <view class="shopTitle">
+                                <view class="left">周周的零食店</view>
+                                <view class="right">
+                                    <text class="payType">{{item.orderStatus == 0?'未支付':item.orderStatus == 1?'已支付':item.orderStatus == 2?'已完成':'已退款'}}</text>
+                                    <text class="buyType">{{item.distributionType == 1 ? '自取':"快递"}}</text>
+                                </view>
+                            </view>
+                            <view class="time">昨天 11：11</view>
+                            <view class="goods">
+                                <view class="goods_title">{{item.orders[0].label}} 等...</view>
+                                <view class="good_price">{{item.totalAmount}}元</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="line bottom">
+                        <t-button class="to_detail" variant="outline" bindtap="changeOrderInfo" data-order="{{item.orders}}">购物清单</t-button>
+                    </view>
+                </view>
+            </block>
+            <view wx:else class="empty">
+                <t-empty icon="info-circle-filled" description="暂无订单" />
+            </view>
+        </t-tab-panel>
+        <t-tab-panel label="已支付" value="1">
+            <block wx:if="{{orderList.length > 0}}">
+                <view class="order_list" wx:for="{{orderList}}" wx:key="index">
+                    <view class="line top">
+                        <image src="{{item.orders[0].img}}" class="image" mode="aspectFill"></image>
+                        <view class="list_info">
+                            <view class="shopTitle">
+                                <view class="left">周周的零食店</view>
+                                <view class="right">
+                                    <text class="payType">{{item.orderStatus == 0?'未支付':item.orderStatus == 1?'已支付':item.orderStatus == 2?'已完成':'已退款'}}</text>
+                                    <text class="buyType">{{item.distributionType == 1 ? '自取':"快递"}}</text>
+                                </view>
+                            </view>
+                            <view class="time">昨天 11：11</view>
+                            <view class="goods">
+                                <view class="goods_title">{{item.orders[0].label}} 等...</view>
+                                <view class="good_price">{{item.totalAmount}}元</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="line bottom">
+                        <t-button class="to_detail" variant="outline">查看详情</t-button>
+                    </view>
+                </view>
+            </block>
+            <view wx:else class="empty">
+                <t-empty icon="info-circle-filled" description="暂无订单" />
+            </view>
+        </t-tab-panel>
+        <t-tab-panel label="已完成" value="2">
+            <block wx:if="{{orderList.length > 0}}">
+                <view class="order_list" wx:for="{{orderList}}" wx:key="index">
+                    <view class="line top">
+                        <image src="{{item.orders[0].img}}" class="image" mode="aspectFill"></image>
+                        <view class="list_info">
+                            <view class="shopTitle">
+                                <view class="left">周周的零食店</view>
+                                <view class="right">
+                                    <text class="payType">{{item.orderStatus == 0?'未支付':item.orderStatus == 1?'已支付':item.orderStatus == 2?'已完成':'已退款'}}</text>
+                                    <text class="buyType">{{item.distributionType == 1 ? '自取':"快递"}}</text>
+                                </view>
+                            </view>
+                            <view class="time">昨天 11：11</view>
+                            <view class="goods">
+                                <view class="goods_title">{{item.orders[0].label}} 等...</view>
+                                <view class="good_price">{{item.totalAmount}}元</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="line bottom">
+                        <t-button class="to_detail" variant="outline">查看详情</t-button>
+                    </view>
+                </view>
+            </block>
+            <view wx:else class="empty">
+                <t-empty icon="info-circle-filled" description="暂无订单" />
+            </view>
+        </t-tab-panel>
+        <t-tab-panel label="已退款" value="3">
+            <block wx:if="{{orderList.length > 0}}">
+                <view class="order_list" wx:for="{{orderList}}" wx:key="index">
+                    <view class="line top">
+                        <image src="{{item.orders[0].img}}" class="image" mode="aspectFill"></image>
+                        <view class="list_info">
+                            <view class="shopTitle">
+                                <view class="left">周周的零食店</view>
+                                <view class="right">
+                                    <text class="payType">{{item.orderStatus == 0?'未支付':item.orderStatus == 1?'已支付':item.orderStatus == 2?'已完成':'已退款'}}</text>
+                                    <text class="buyType">{{item.distributionType == 1 ? '自取':"快递"}}</text>
+                                </view>
+                            </view>
+                            <view class="time">昨天 11：11</view>
+                            <view class="goods">
+                                <view class="goods_title">{{item.orders[0].label}} 等...</view>
+                                <view class="good_price">{{item.totalAmount}}元</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="line bottom">
+                        <t-button class="to_detail" variant="outline">查看详情</t-button>
+                    </view>
+                </view>
+            </block>
+            <view wx:else class="empty">
+                <t-empty icon="info-circle-filled" description="暂无订单" />
+            </view>
+        </t-tab-panel>
+        <t-tab-panel label="全部" value="4">
+            <block wx:if="{{orderList.length > 0}}">
+                <view class="order_list" wx:for="{{orderList}}" wx:key="index">
+                    <view class="line top">
+                        <image src="{{item.orders[0].img}}" class="image" mode="aspectFill"></image>
+                        <view class="list_info">
+                            <view class="shopTitle">
+                                <view class="left">周周的零食店</view>
+                                <view class="right">
+                                    <text class="payType">{{item.orderStatus == 0?'未支付':item.orderStatus == 1?'已支付':item.orderStatus == 2?'已完成':'已退款'}}</text>
+                                    <text class="buyType">{{item.distributionType == 1 ? '自取':"快递"}}</text>
+                                </view>
+                            </view>
+                            <view class="time">昨天 11：11</view>
+                            <view class="goods">
+                                <view class="goods_title">{{item.orders[0].label}} 等...</view>
+                                <view class="good_price">{{item.totalAmount}}元</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="line bottom">
+                        <t-button class="to_detail" variant="outline">查看详情</t-button>
+                    </view>
+                </view>
+            </block>
+            <view wx:else class="empty">
+                <t-empty icon="info-circle-filled" description="暂无订单" />
+            </view>
+        </t-tab-panel>
+    </t-tabs>
+    <t-dialog visible="{{showWarnConfirm}}" content="您当前还未授权登入，请先授权登入" confirm-btn="{{ { content: '授权登入', variant: 'base', theme: 'light' } }}" cancel-btn="取消" bind:confirm="closeDialog2" bind:cancel="closeDialog2" />
+    <t-dialog visible="{{showMultiTextAndTitle}}" title="订单详情" confirm-btn="{{ { content: '知道了', variant: 'base' } }}" bind:confirm="closeDialog">
+        <scroll-view slot="content" scroll-y class="long-content">
+            <view class="content-container">
+                <view class="order_info" wx:for="{{orderInfo}}" wx:key="index">
+                    <view class="title">{{item.label}}</view>
+                    <view class="num">x {{item.orderNum}}</view>
+                    <view class="price">{{item.price * item.orderNum}}元</view>
+                </view>
+            </view>
+        </scroll-view>
+    </t-dialog>
+</view>

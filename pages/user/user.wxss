@@ -1,0 +1,123 @@
+.userInfo {
+    background-color: #eee;
+    min-height: 100vh;
+}
+
+.userInfo .header {
+    height: 350rpx;
+    background-color: #de8cdc;
+    border-radius: 0 0 50rpx 10%;
+    padding: 25rpx 25rpx 0;
+}
+
+.userInfo .header .line1 {
+    display: flex;
+}
+
+.userInfo .header .line2 {
+    color: #fff;
+    padding-left: 25rpx;
+    font-size: 25rpx
+}
+.userInfo .header .line2 .integral{
+    font-size: 35rpx;
+}
+
+.userInfo .header .portrait {
+    width: 140rpx;
+    height: 140rpx;
+    background-color: #ddd;
+    border-radius: 50%;
+    border: rgba(255, 255, 255, 0.8) solid 5rpx;
+    box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userInfo .header .portrait image {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+}
+
+.userInfo .header .info {
+    display: flex;
+    height: 175rpx;
+    align-items: center;
+    padding-left: 25rpx;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 35rpx;
+    width: 430rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold;
+}
+
+.userInfo .header .info .t-button {
+    background-color: #52c32f;
+    color: #fff;
+    border: none;
+    margin: 0;
+}
+
+.userInfo .content {
+    width: 700rpx;
+    margin: -40rpx auto 0;
+}
+
+.userInfo .content .orderList {
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 25rpx;
+}
+
+.userInfo .content .orderList .content_list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25rpx;
+    font-size: 27rpx;
+    color: #444;
+}
+
+.userInfo .content .orderList .title {
+    margin-bottom: 50rpx;
+}
+
+.userInfo .content .orderList .content_list .list {
+    text-align: center;
+}
+
+.userInfo .content .orderList .content_list .list .icon image {
+    width: 50rpx;
+    height: 50rpx;
+    margin-bottom: 20rpx;
+}
+
+.userInfo .content .discounts {
+    margin-top: 25rpx;
+    background-color: #fff;
+    border-radius: 25rpx;
+    padding: 25rpx;
+}
+
+.userInfo .content .discounts .list {
+    height: 150rpx;
+    display: flex;
+    align-items: center;
+}
+
+.userInfo .content .discounts .list .image {
+    width: 90rpx;
+    height: 90rpx;
+    margin-right: 40rpx;
+}
+
+.userInfo .content .discounts .list .label {
+    color: #666;
+}
+
+.userInfo .content .discounts.aboutme {
+    padding: 0 25rpx;
+}

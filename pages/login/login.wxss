@@ -1,0 +1,56 @@
+/* pages/login/login.wxss */
+.login_page {
+    min-height: 100vh;
+    background-color: #eee;
+}
+
+.login_page .header {
+    width: 200rpx;
+    height: 200rpx;
+    padding-top: 100rpx;
+    margin: auto;
+}
+
+.login_page .header .tip {
+    color: #ababab;
+    font-size: 25rpx;
+    text-align: center;
+    margin-top: 10rpx;
+}
+
+.login_page .header .avatar-wrapper {
+    padding: 0;
+    border: none;
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    border: solid 1px #ccc;
+    box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.2);
+}
+
+.login_page .header .avatar {
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.login_page .username {
+    background-color: #fff;
+    padding: 20rpx;
+    margin-top: 100rpx;
+    text-align: center;
+}
+
+.login_page .bottomButton {
+
+    text-align: center;
+}
+
+.login_page .bottomButton .t-button {
+    position: fixed;
+    bottom: 100rpx;
+    background-color: #52c32f;
+    color: #fff;
+    left: 0;
+    right: 0;
+    width: 300rpx;
+}

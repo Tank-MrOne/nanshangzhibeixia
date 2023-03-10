@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<view class="container">
+    <block wx:if="{{load}}">
+        <view class="loading">
+            <t-loading theme="circular" size="140rpx" class="wrapper" />
+        </view>
+    </block>
+    <block wx:else>
+        <t-swiper wx:if="{{swiperList.length > 0}}" bind:click="onTapSwiper" image-props="{{imageProps}}" height="300" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" list="{{swiperList}}" navigation="{{ { type: 'dots-bar' } }}" />
+        <view class="choiceBox">
+            <view class="left item" bindtap="toFood" data-type="1">
+                <image class="choice_image" src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/teke_in.png" />
+                <view class="label">自取</view>
+                <view class="text">PICK UP</view>
+            </view>
+            <view class="right item" bindtap="toFood" data-type="2">
+                <image class="choice_image" src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/take_out.png" />
+                <view class="label">快递</view>
+                <view class="text">TAKE OUT</view>
+            </view>
+        </view>
+        <view class="storeInfo">
+            <view class="title">
+                <view class="text">门店</view>
+                <t-icon name="chevron-right" size="48rpx" />
+            </view>
+            <view class="content">
+                <view class="info">
+                    <view class="title">周周的零食店</view>
+                    <view class="address">
+                        陕西省汉中市勉县
+                    </view>
+                    <view class="distance">
+                        <t-icon name="location" size="38rpx" /> 100公里
+                    </view>
+                </view>
+                <view class="toFood" bindtap="toFood" data-type="0">去下单</view>
+            </view>
+        </view>
+        <view class="foot">
+            <t-footer theme="text" copyright="{{copyright}}"></t-footer>
+        </view>
+    </block>
+</view>

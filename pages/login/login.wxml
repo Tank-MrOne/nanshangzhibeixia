@@ -1,0 +1,17 @@
+<t-message id="t-message" />
+<view class="login_page">
+    <view class="header">
+        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+            <image class="avatar" src="{{avatarUrl}}" mode="aspectFill"></image>
+        </button>
+        <view class="tip">
+            点击更换头像
+        </view>
+    </view>
+    <view class="username">
+        <input type="nickname" class="weui-input" placeholder="请输入昵称" bind:change="getNickname"/>
+    </view>
+    <view class="bottomButton">
+        <t-button bindtap="registerUser" icon="logo-wechat" content="授权登入" size="large" class="margin"></t-button>
+    </view>
+</view>

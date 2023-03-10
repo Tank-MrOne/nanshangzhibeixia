@@ -1,0 +1,78 @@
+<view class="userInfo">
+    <view class="header">
+        <view class="line1">
+            <view class="portrait">
+                <image src="{{avatarUrl}}" mode="aspectFill" />
+            </view>
+            <view class="info">
+                <view wx:if="{{isLogin}}" class="userName">{{nickname}}</view>
+                <t-button wx:else icon="logo-wechat" bindtap="routerToLogin" content="授权登入" size="large" class="margin"></t-button>
+            </view>
+        </view>
+        <view class="line2">
+            <view>
+                当前余额： <text class="integral">{{balance}}</text>
+            </view>
+            <view>
+                当前积分： <text class="integral">{{integral}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="content">
+        <view class="orderList">
+            <view class="title">我的订单</view>
+            <view class="content_list">
+                <view class="list" bindtap="navToOrder" data-tab="0">
+                    <view class="icon">
+                        <image src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/pay.png" mode="aspectFit" />
+                    </view>
+                    <view class="label">待支付</view>
+                </view>
+                <view class="list" bindtap="navToOrder" data-tab="1">
+                    <view class="icon">
+                        <image src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/paying.png" mode="aspectFit" />
+                    </view>
+                    <view class="label">已支付</view>
+                </view>
+                <view class="list" bindtap="navToOrder" data-tab="2">
+                    <view class="icon">
+                        <image src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/payed.png" mode="aspectFit" />
+                    </view>
+                    <view class="label">已完成</view>
+                </view>
+                <view class="list" bindtap="navToOrder" data-tab="3">
+                    <view class="icon">
+                        <image src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/refund.png" mode="aspectFit" />
+                    </view>
+                    <view class="label">已退款</view>
+                </view>
+                <view class="list" bindtap="navToOrder" data-tab="4">
+                    <view class="icon">
+                        <image src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/orders.png" mode="aspectFit" />
+                    </view>
+                    <view class="label">全部订单</view>
+                </view>
+            </view>
+        </view>
+        <view class="discounts">
+            <view class="list">
+                <image src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/星礼卡.png" mode="aspectFit" class="image" />
+                <view class="lable">我的积分</view>
+            </view>
+            <view class="list">
+                <image src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/youhuiquan.png" mode="aspectFit" class="image" />
+                <view class="lable">我的优惠券</view>
+            </view>
+            <view class="list">
+                <image src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/lihe.png" mode="aspectFit" class="image" />
+                <view class="lable">企业福利</view>
+            </view>
+        </view>
+        <view class="discounts aboutme">
+            <view class="list">
+                <image src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/认证用户.png" mode="aspectFit" class="image" />
+                <view class="lable">关于我们</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,93 @@
+/**index.wxss**/
+.container{
+    background-color: #eee;
+    min-height: 100vh;
+}
+.container .loading{
+    background-color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .t-swiper{
+    width: 100%;
+    height: 300px;
+}
+.container .t-swiper image {
+    width: 100%;
+    height: 100%;
+}
+
+.container .t-swiper .t-swiper-host{
+    border-radius: 0;
+}
+.container .choiceBox{
+    display: flex;
+    width: 700rpx;
+    margin: 10px auto;
+    border-radius: 20rpx;
+    background-color: #fff;
+    justify-content: space-between;
+}
+.container .choiceBox .item{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30rpx 0;
+}
+.container .choiceBox .item .choice_image{
+    width: 150rpx;
+    height: 150rpx;
+}
+.container .choiceBox .left{
+    border-right: 1px solid #eee;
+}
+.container .choiceBox .item .label{
+    font-size: 35rpx;
+    margin-top: 10rpx;
+}
+.container .choiceBox .item .text{
+    font-size: 20rpx;
+    margin-top: 20rpx;
+    color: #ccc;
+}
+.container .storeInfo{
+    background-color: #fff;
+    padding:20rpx 30rpx;
+}
+.container .storeInfo .title{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+    font-size: 35rpx;
+}
+.container .storeInfo .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container .storeInfo .content .info{
+    font-size: 25rpx;
+    color: #666;
+}
+.container .storeInfo .content .info .title{
+    font-size: 27rpx;
+    margin-bottom: 10rpx;
+    color: #111;
+}
+.container .storeInfo .content .info .address{
+    margin-bottom: 10rpx;
+}
+.container .storeInfo .content .info .distance{
+    display: flex;
+}
+.container .storeInfo .content .toFood{
+    font-size: 25rpx;
+    color: #666;
+}
+.container .foot{
+    margin-top: 30rpx;
+}

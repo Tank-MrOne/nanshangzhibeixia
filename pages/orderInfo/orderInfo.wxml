@@ -1,0 +1,75 @@
+<!--pages/orderInfo/orderInfo.wxml-->
+<view class="order_indo_page">
+    <view class="view address_box">
+        <view class="title">周周的零食店</view>
+        <view class="addressButton">
+            <view class="address">{{address?address:'请填写收获地址'}}</view>
+            <t-icon name="chevron-right" size="48rpx" />
+        </view>
+    </view>
+    <view class="view order_remarks">
+        <view class="label">订单备注</view>
+        <view class="remarks" bindtap="changeRemarks">
+            <text>{{remarks?remarks:'要求、偏好'}}</text>
+            <t-icon name="chevron-right" size="48rpx" />
+        </view>
+    </view>
+    <view class="view order_list">
+        <view class="title">共{{order.orders.length}}份商品</view>
+        <view class="list" wx:for="{{order.orders}}" wx:key="index">
+            <view class="name">{{item.label}}
+                <view class="taste">
+                    口味：<text>{{item.specification[item.choiceTaste].taste}}</text>
+                </view>
+            </view>
+            <view class="number">x{{item.orderNum}}</view>
+            <view class="price">￥
+                {{fn.computeMoney(item.specification[item.choiceTaste].price,item.orderNum)}}
+            </view>
+            <wxs module="fn">
+                module.exports = {
+                    computeMoney: function (money, num) {
+                        return ((money * 1000) * num) / 1000
+                    }
+                }
+            </wxs>
+        </view>
+        <view class="coupon">
+            <view class="label">使用券</view>
+            <view class="coupon_info">
+                <text>{{coupon?coupon:'无可用券'}}</text>
+                <t-icon name="chevron-right" size="48rpx" />
+            </view>
+        </view>
+        <view class="subtotal">
+            <text>{{order.totalAmount}}</text>小计 ￥
+        </view>
+    </view>
+    <view class="view payType">
+        <view class="title">支付方式</view>
+        <view class="radio_list" bindtap="changePayType" data-type="1">
+            <image wx:if="{{payType == 1}}" src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/微信支付.png" mode="" />
+            <image wx:else src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/微信支付_灰.png" mode="" />
+            <view class="label">微信支付</view>
+            <t-icon color="#00c800" wx:if="{{payType == 1}}" name="check-circle-filled" size="48rpx" />
+            <t-icon color="#8a8a8a" wx:else name="circle" size="48rpx" />
+        </view>
+        <view class="radio_list" bindtap="changePayType" data-type="2">
+            <image wx:if="{{payType == 2}}" src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/支付-余额.png" mode="" />
+            <image wx:else src="cloud://cloud1-9g0beoqm1e8c1685.636c-cloud1-9g0beoqm1e8c1685-1317117621/cloudbase-images/余额支付_灰.png" mode="" />
+            <view class="label">余额支付</view>
+            <t-icon color="#e7951c" wx:if="{{payType == 2}}" name="check-circle-filled" size="48rpx" />
+            <t-icon color="#8a8a8a" wx:else name="circle" size="48rpx" />
+            <view class="noMoney">余额不足</view>
+        </view>
+    </view>
+    <view class="view bottomButton">
+        <view class="submit">确认下单</view>
+        <view class="money">
+            共计 <text>￥</text><text class="money">{{order.totalAmount}}</text>
+        </view>
+    </view>
+    <t-dialog visible="{{showWithInput}}" title="订单备注" confirm-btn="确定" cancel-btn="取消" bind:confirm="closeDialog" bind:cancel="closeDialog">
+        <t-input value="{{remarks}}" borderless class="dialog-input" clearable slot="content" placeholder="要求、偏好" bindchange="changeRemarksInput" bindclear="clearRemarksInput" />
+    </t-dialog>
+</view>

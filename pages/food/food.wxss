@@ -1,0 +1,271 @@
+.side-bar-wrapper {
+    color: #888;
+}
+
+.side-bar-wrapper .t-side-bar .t-side-bar-item {
+    color: #888;
+}
+
+.side-bar-wrapper .t-side-bar .t-side-bar-item--active {
+    color: #de8cdc;
+}
+
+.side-bar-wrapper .content {
+    padding-bottom: 100rpx;
+}
+.side-bar-wrapper .content.noPadding {
+    padding-bottom: 1rpx;
+}
+
+.side-bar-wrapper .content .section .title {
+    padding-left: 30rpx;
+    font-size: 25rpx;
+    margin-bottom: 20rpx;
+}
+
+.side-bar-wrapper .content .section .food_items {
+    padding-left: 30rpx;
+    display: flex;
+    margin-bottom: 40rpx;
+    border-top: dashed 1px #efefef;
+    padding-top: 20rpx;
+}
+
+.side-bar-wrapper .content .section .food_items .image {
+    width: 170rpx;
+    height: 170rpx;
+    border-radius: 10rpx;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo {
+    flex: 1;
+    padding: 0 20rpx;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_title {
+    font-weight: bold;
+    font-size: 30rpx;
+    color: #333;
+    margin-bottom: 10rpx;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_desc {
+    width: 300rpx;
+    font-size: 22rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_taste{
+    display: flex;
+    /* justify-content: space-between; */
+    font-size: 20rpx;
+    flex-wrap: wrap;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_taste .taste{
+    margin-right: 10rpx;
+    margin-top: 10rpx;
+    background-color: #efefef;
+    padding: 10rpx 20rpx;
+    border-radius: 10rpx;
+    border: solid 1px #fff;
+}
+.side-bar-wrapper .content .section .food_items .foodInfo .info_taste .taste.choice{
+    border-color: #f0bf1d;
+    color: #333;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_bottom .price {
+    color: #333;
+    display: flex;
+    align-items: flex-end;
+    font-size: 35rpx;
+    font-weight: bold;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_bottom .price .text {
+    font-size: 25rpx;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_bottom .button {
+    display: flex;
+    margin-top: 42rpx;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_bottom .button .delete {
+    color: #333;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_bottom .button .num {
+    font-size: 35rpx;
+    color: #333;
+    font-weight: bold;
+    width: 60rpx;
+    text-align: center;
+}
+
+.side-bar-wrapper .content .section .food_items .foodInfo .info_bottom .button .add {
+    color: #f0bf1d;
+}
+
+.side-bar-wrapper .buy_Bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #efefef;
+    height: 100rpx;
+    box-shadow: 0 0 5rpx rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    z-index: 9999;
+}
+
+.side-bar-wrapper .buy_Bottom .buy_car {
+    width: 200rpx;
+    height: 80rpx;
+    transform: translateY(-10rpx) translateX(20rpx);
+}
+
+.side-bar-wrapper .buy_Bottom .buy_car .button {
+    color: #333;
+    width: 200rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+    background-color: #fff;
+    font-size: 30rpx;
+    box-shadow: 0 0 5rpx rgba(0, 0, 0, 0.1);
+}
+
+.side-bar-wrapper .buy_Bottom .settle {
+    display: flex;
+    align-items: center;
+}
+
+.side-bar-wrapper .buy_Bottom .settle .money {
+    display: flex;
+    font-size: 25rpx;
+    color: #333;
+    min-width: 150rpx;
+    height: 100rpx;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10rpx;
+}
+
+.side-bar-wrapper .buy_Bottom .settle .money .text {
+    font-size: 35rpx;
+}
+
+.side-bar-wrapper .buy_Bottom .settle .settle_toPage {
+    height: 100rpx;
+    background-color: #f0bf1d;
+    line-height: 100rpx;
+    color: #fff;
+    width: 150rpx;
+    text-align: center;
+    font-size: 30rpx;
+}
+
+.block {
+    background: #fff;
+    color: #333;
+    width: 100vw;
+}
+
+.block .block_warp {
+    min-height: 100rpx;
+    max-height: 800rpx;
+    overflow: auto;
+}
+
+.block .block_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80rpx;
+    padding: 0 20rpx;
+    color: #666;
+}
+
+.block .block_title .right {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.block .block_list {
+    display: flex;
+    padding: 0 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.block .block_list .image {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+}
+
+.block .block_list .foodInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.block .block_list .foodInfo .info_top .info_title {
+    font-size: 30rpx;
+    max-width: 500rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.block .block_list .foodInfo .taste{
+    font-size: 25rpx;
+    color: #666;
+}
+.block .block_list .foodInfo .taste text{
+    color: #fff;
+    padding: 0 10rpx;
+    border-radius: 5rpx;
+    background-color: #f0bf1d;
+}
+.block .block_list .foodInfo .info_bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.block .block_list .foodInfo .info_bottom .price {
+    display: flex;
+    color: #f00;
+    font-weight: bold;
+    font-size: 30rpx;
+    align-items: flex-end;
+}
+
+.block .block_list .foodInfo .info_bottom .price .text {
+    font-size: 25rpx;
+}
+
+.block .block_list .foodInfo .info_bottom .button {
+    display: flex;
+    min-width: 150rpx;
+    justify-content: space-between;
+}
+
+.block .block_list .foodInfo .info_bottom .button .add {
+    color: #f0bf1d;
+}
+
+.dialog-image {
+    width: 100%;
+    height: 160px;
+}

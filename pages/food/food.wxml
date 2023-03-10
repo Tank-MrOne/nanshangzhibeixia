@@ -1,0 +1,98 @@
+<view class="page_food side-bar-wrapper">
+    <t-side-bar value="{{sideBarIndex}}" bind:change="onSideBarChange">
+        <t-side-bar-item wx:for="{{categories}}" wx:key="index" value="{{item.value || index}}" label="{{item.label}}" badge-props="{{item.badgeProps}}" />
+    </t-side-bar>
+    <scroll-view class="content {{orders.length == 0 ? 'noPadding':''}}" scroll-y scroll-with-animation scroll-top="{{scrollTop}}" bind:scroll="onScroll">
+        <view wx:for="{{categories}}" wx:key="index" class="section">
+            <view class="title">{{item.title || item.label}}</view>
+            <block wx:for="{{item.items}}" wx:key="idx" wx:for-item="cargo" wx:for-index="idx">
+                <view class="food_items">
+                    <image class="image" src="{{cargo.img}}" mode="aspectFill" />
+                    <view class="foodInfo">
+                        <view class="info_title">{{cargo.label}}</view>
+                        <view class="info_desc">{{cargo.desc}}</view>
+                        <view class="info_taste" wx:if="{{cargo.specification.length}}">
+                            <view bindtap="choiceTaste"  data-cargo="{{idx}}" data-index="{{index}}" data-taste="{{idx2}}" class="taste {{cargo.choiceTaste === idx2 ? 'choice':''}}" wx:for="{{cargo.specification}}"  wx:key="idx2" wx:for-item="taste" wx:for-index="idx2">
+                                {{taste.taste}}
+                            </view>
+                        </view>
+                        <view class="info_bottom">
+                            <view class="price">
+                                <view class="text">￥</view>{{cargo.specification[cargo.choiceTaste].price}}
+                            </view>
+                            <view class="button">
+                                <view class="delete" bindtap="delFoodToOrder" data-cargo="{{cargo}}" data-index="{{index}}" data-choiceTaste="{{cargo.choiceTaste}}">
+                                    <t-icon name="minus-circle" size="48rpx" wx:if="{{cargo.tasteNum[cargo.choiceTaste] && cargo.tasteNum[cargo.choiceTaste]>0}}" />
+                                </view>
+                                <view class="num" wx:if="{{cargo.tasteNum[cargo.choiceTaste] && cargo.tasteNum[cargo.choiceTaste] > 0}}">{{cargo.tasteNum[cargo.choiceTaste]}}</view>
+                                <view class="add" bindtap="addFoodToOrder" data-cargo="{{cargo}}" data-index="{{index}}" data-choiceTaste="{{cargo.choiceTaste}}">
+                                    <t-icon name="add-circle" size="48rpx" />
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+    <view class="buy_Bottom" wx:if="{{orders.length > 0}}">
+        <t-badge count="{{orders.length}}" offset="{{ [3, 3] }}" class="buy_car">
+            <t-button icon="cart" class="button" bind:tap="handlePopup">购物车</t-button>
+        </t-badge>
+        <view class="settle">
+            <view class="money">￥<view class="text">{{totalAmount}}</view>
+            </view>
+            <view class="settle_toPage" bindtap="settleAccounts">去结账</view>
+        </view>
+    </view>
+    <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+        <view class="block">
+            <view class="block_title">
+                <view class="left">已选商品</view>
+                <view class="right" bindtap="clearAllOrder">
+                    <t-icon name="delete" size="30rpx" />
+                    清空购物车
+                </view>
+            </view>
+            <view class="block_warp">
+                <view class="block_list" wx:for="{{orders}}" wx:key="index">
+                    <image class="image" src="{{item.img}}" mode="aspectFill" />
+                    <view class="foodInfo">
+                        <view class="info_top">
+                            <view class="info_title">{{item.label}}</view>
+                        </view>
+                        <view class="taste">
+                            口味：<text>{{item.specification[item.choiceTaste].taste}}</text>
+                        </view>
+                        <view class="info_bottom">
+                            <view class="price">
+                                <view class="text">￥</view>{{fn.computeMoney(item.specification[item.choiceTaste].price,item.orderNum)}}
+                            </view>
+                            <wxs module="fn">
+                                module.exports={
+                                    computeMoney:function(money,num){
+                                        return ((money * 1000) * num)/1000
+                                    }
+                                }
+                            </wxs>
+                            <view class="button">
+                                <view class="delete" bindtap="delFoodToOrder" data-choiceTaste="{{item.choiceTaste}}" data-cargo="{{item}}" data-index="{{item.idx}}">
+                                    <t-icon name="minus-circle" size="48rpx" />
+                                </view>
+                                <view class="num">{{item.orderNum}}</view>
+                                <view class="add" bindtap="addFoodToOrder" data-choiceTaste="{{item.choiceTaste}}" data-cargo="{{item}}" data-index="{{item.idx}}">
+                                    <t-icon name="add-circle" size="48rpx" />
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </t-popup>
+    <t-dialog visible="{{imageOnTop}}" title="请选择配送方式" content="物流支持顺丰、申通、圆通、百顺，指定物流可在订单内留言" confirm-btn="{{ {content: '快递', variant: 'base' } }}" cancel-btn="{{ {content: '自取', variant: 'base' } }}" bind:confirm="closeDialog" bind:cancel="closeDialog">
+        <t-image slot="top" t-class="dialog-image" src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png" />
+    </t-dialog>
+    <t-dialog visible="{{showWarnConfirm}}" content="您当前还未授权登入，请先授权登入" confirm-btn="{{ { content: '授权登入', variant: 'base', theme: 'light' } }}" cancel-btn="取消" bind:confirm="closeDialog2" bind:cancel="closeDialog2" />
+</view>

@@ -1,0 +1,62 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/foodDetail/foodDetail",
+        "pages/food/food",
+        "pages/order/order",
+        "pages/orderInfo/orderInfo",
+        "pages/user/user",
+        "pages/login/login"
+    ],
+    "lazyCodeLoading": "requiredComponents",
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "周周零食店",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#bfbfbf",
+        "selectedColor": "#de8cdc",
+        "list": [{
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/home_no.png",
+                "selectedIconPath": "images/home.png"
+            },
+            {
+                "pagePath": "pages/food/food",
+                "text": "点单",
+                "iconPath": "images/food_no.png",
+                "selectedIconPath": "images/food.png"
+            },
+            {
+                "pagePath": "pages/order/order",
+                "text": "订单",
+                "iconPath": "images/order_no.png",
+                "selectedIconPath": "images/order.png"
+            },
+            {
+                "pagePath": "pages/user/user",
+                "text": "个人中心",
+                "iconPath": "images/user_no.png",
+                "selectedIconPath": "images/user.png"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json",
+    "usingComponents": {
+        "t-side-bar": "tdesign-miniprogram/side-bar/side-bar",
+        "t-side-bar-item": "tdesign-miniprogram/side-bar-item/side-bar-item",
+        "t-icon": "tdesign-miniprogram/icon/icon",
+        "t-footer": "tdesign-miniprogram/footer/footer",
+        "t-popup": "tdesign-miniprogram/popup/popup",
+        "t-button": "tdesign-miniprogram/button/button",
+        "t-message": "tdesign-miniprogram/message/message"
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    }
+}

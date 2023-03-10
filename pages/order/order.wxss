@@ -1,0 +1,109 @@
+/* pages/order/order.wxss */
+.my_order {
+    padding: 0 20rpx;
+}
+.my_order .empty{
+    margin-top: 100rpx;
+}
+.my_order .order_list {
+    padding-bottom: 20rpx;
+    border-bottom: solid 1px #efefef;
+    margin-top: 30rpx;
+}
+
+.my_order .order_list .line {
+    display: flex;
+}
+
+.my_order .order_list .top .image {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 10rpx;
+}
+
+.my_order .order_list .top .list_info {
+    flex: 1;
+    padding-left: 20rpx;
+    color: #333;
+}
+
+.my_order .order_list .top .list_info .shopTitle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5rpx;
+}
+
+.my_order .order_list .top .list_info .shopTitle .left {
+    font-size: 30rpx;
+}
+
+.my_order .order_list .top .list_info .shopTitle .right {
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.my_order .order_list .top .list_info .shopTitle .right .payType {
+    padding-right: 10rpx;
+    border-right: 1px #777 solid;
+}
+
+.my_order .order_list .top .list_info .shopTitle .right .buyType {
+    margin-left: 10rpx;
+    color: #de8cdc;
+}
+
+.my_order .order_list .top .list_info .time {
+    font-size: 20rpx;
+    color: #777;
+}
+
+.my_order .order_list .top .list_info .goods {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40rpx;
+}
+
+.my_order .order_list .top .list_info .goods .goods_title {
+    width: 350rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.my_order .order_list .top .list_info .goods .goods_price {
+    color: #222;
+}
+.my_order .order_list .bottom{
+    margin-top: 40rpx;
+}
+.my_order .order_list .bottom .to_detail {
+    width: 200rpx;
+    height: 60rpx;
+    border-right: 30rpx;
+    font-size: 30rpx;
+    color: #666;
+    margin: 0 !important;
+}
+.my_order .long-content {
+    height: 576rpx;
+    margin-top: 16rpx;
+    font-size: 32rpx;
+    color: #888;
+}
+.my_order .long-content .order_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.my_order .long-content .order_info view{
+    line-height: 70rpx;
+}
+.my_order .long-content .order_info .title{
+    width: 300rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.my_order .long-content .order_info .num{
+    width: 60rpx;
+}

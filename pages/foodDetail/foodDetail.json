@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "t-swiper": "tdesign-miniprogram/swiper/swiper",
+        "t-loading": "tdesign-miniprogram/loading/loading",
+        "t-radio": "tdesign-miniprogram/radio/radio",
+        "t-radio-group": "tdesign-miniprogram/radio-group/radio-group"
+    }
+}
