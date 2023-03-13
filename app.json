@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/address/address",
         "pages/index/index",
         "pages/foodDetail/foodDetail",
         "pages/food/food",
@@ -18,7 +19,8 @@
     "tabBar": {
         "color": "#bfbfbf",
         "selectedColor": "#de8cdc",
-        "list": [{
+        "list": [
+            {
                 "pagePath": "pages/index/index",
                 "text": "首页",
                 "iconPath": "images/home_no.png",
@@ -26,7 +28,7 @@
             },
             {
                 "pagePath": "pages/food/food",
-                "text": "点单",
+                "text": "商品",
                 "iconPath": "images/food_no.png",
                 "selectedIconPath": "images/food.png"
             },

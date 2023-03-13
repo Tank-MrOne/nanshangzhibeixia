@@ -22,14 +22,14 @@
     </view>
     <view class="buttonOrder">
         <view class="money">
-            ￥25.00
+            ￥{{orderPrice}}
         </view>
         <view class="button">
-            <view class="delete">
+            <view wx:if="{{orderNum > 0}}" class="delete" bindtap="delFoodToOrder">
                 <t-icon name="minus-circle" size="48rpx" />
             </view>
-            <view class="num">0</view>
-            <view class="add">
+            <view wx:if="{{orderNum > 0}}" class="num">{{orderNum}}</view>
+            <view class="add" bindtap="addFoodToOrder">
                 <t-icon name="add-circle" size="48rpx" />
             </view>
         </view>

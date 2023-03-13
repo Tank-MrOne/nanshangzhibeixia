@@ -12,7 +12,8 @@ Page({
         showMultiTextAndTitle: false,
         orderList: [],
         defaultValue: 0,
-        orderInfo: []
+        orderInfo: [],
+        orderId: '',
     },
     onShow() {
         if (app.globalData.isLogin) {
@@ -80,10 +81,46 @@ Page({
     changeOrderInfo(event) {
         this.setData({
             showMultiTextAndTitle: true,
-            orderInfo: event.currentTarget.dataset.order
+            orderInfo: event.currentTarget.dataset.order,
+            orderId: event.currentTarget.dataset.oid
         })
     },
     closeDialog(event) {
+        if (this.data.orderId) {
+            if (event.detail.index === 2 && wx.getStorageSync('order')) {
+                wx.showToast({
+                    title: '购物车存在冲突',
+                    icon: 'error',
+                    duration: 2000
+                })
+                this.setData({
+                    showMultiTextAndTitle: false
+                });
+                return
+            }
+            if (event.detail.index !== 0) {
+                buy_orders.doc(this.data.orderId).remove({
+                    success: (res) => {
+                        if (event.detail.index === 1) {
+                            this.findOrder()
+                            wx.showToast({
+                                title: '删除成功',
+                                icon: 'success',
+                                duration: 2000
+                            })
+                        } else if (event.detail.index === 2) {
+                            wx.setStorageSync('order', JSON.stringify(this.data.orderInfo))
+                            wx.switchTab({
+                                url: '/pages/food/food'
+                            })
+                        }
+                    },
+                    fail: (error) => {
+                        console.log('失败', error)
+                    }
+                })
+            }
+        }
         this.setData({
             showMultiTextAndTitle: false
         });

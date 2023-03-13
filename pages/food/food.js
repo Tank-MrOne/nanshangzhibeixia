@@ -38,6 +38,8 @@ Page({
                                         items: arr,
                                     }
                                 })
+                            }, () => {
+                                this.getStorageDetail()
                             })
                         }
                     }).then(() => {
@@ -54,6 +56,29 @@ Page({
         })
 
 
+    },
+    onShow() {
+        if (this.data.categories.length) {
+            this.getStorageDetail()
+        }
+    },
+    getStorageDetail() {
+        let order = wx.getStorageSync('order')
+        if (order) {
+            this.setData({
+                orders: JSON.parse(order)
+            }, () => {
+                this.data.orders.forEach(item => {
+                    let index2 = this.data.categories[item.class].items.findIndex(el => el.id === item.id)
+                    if (index2 !== -1) {
+                        this.setData({
+                            ['categories[' + item.class + '].items[' + index2 + '].tasteNum[' + item.choiceTaste + ']']: item.orderNum
+                        })
+                    }
+                })
+                this.totalAmountCount()
+            })
+        }
     },
     onSideBarChange(e) {
         const {
@@ -105,9 +130,9 @@ Page({
         let index = this.data.orders.findIndex(item => item.id === order.id && item.choiceTaste === order.choiceTaste)
         let index2 = this.data.categories[idx].items.findIndex(item => item.id === order.id)
         let choiceNum = this.data.categories[idx].items[index2].tasteNum[choiceTaste] ? this.data.categories[idx].items[index2].tasteNum[choiceTaste] : 0
-        let num = choiceNum + 1
+        let num = (choiceNum + 1)
         this.setData({
-            ['categories[' + idx + '].items[' + index2 + '].tasteNum['+choiceTaste+']']: num
+            ['categories[' + idx + '].items[' + index2 + '].tasteNum[' + choiceTaste + ']']: num
         })
         if (index === -1) {
             order.orderNum = 1
@@ -125,11 +150,6 @@ Page({
                 this.totalAmountCount()
             })
         }
-        // wx.cloud.database().collection('buy_orders').add({
-        //     data:{
-
-        //     }
-        // })
     },
     // 删除到购物车
     delFoodToOrder(event) {
@@ -142,7 +162,7 @@ Page({
         let choiceNum = this.data.categories[idx].items[index2].tasteNum[choiceTaste] ? this.data.categories[idx].items[index2].tasteNum[choiceTaste] : 0
         let num = choiceNum - 1
         this.setData({
-            ['categories[' + idx + '].items[' + index2 + '].tasteNum['+choiceTaste+']']: num
+            ['categories[' + idx + '].items[' + index2 + '].tasteNum[' + choiceTaste + ']']: num
         })
         if (num === 0) {
             orders.splice(index, 1)
@@ -166,14 +186,12 @@ Page({
         }
     },
     // 选择口味
-    choiceTaste(event){
+    choiceTaste(event) {
         let order = event.currentTarget.dataset.cargo
         let idx = event.currentTarget.dataset.index
         let tasteIndex = event.currentTarget.dataset.taste
         this.setData({
             ['categories[' + idx + '].items[' + order + '].choiceTaste']: tasteIndex
-        },()=>{
-            this.totalAmountCount()
         })
     },
     // 计算总金额
@@ -185,15 +203,28 @@ Page({
         })
         this.setData({
             totalAmount: count / 100
+        }, () => {
+            if (this.data.orders.length === 0) {
+                wx.removeStorage({
+                    key: 'order',
+                })
+            } else {
+                wx.setStorage({
+                    key: "order",
+                    data: JSON.stringify(this.data.orders)
+                })
+            }
         })
     },
     // 清空购物车
     clearAllOrder() {
         let categories = this.data.categories
-        console.log('clearAllOrder', categories)
         categories.forEach(item => {
             item.items.forEach(el => {
                 el.num = 0
+                el.choiceTaste = 0
+                el.tasteNum = {}
+                el.tasteNum[el.choiceTaste] = 0
             })
         })
         this.setData({
@@ -201,6 +232,10 @@ Page({
             orders: [],
             visible: false,
             totalAmount: 0
+        }, () => {
+            wx.removeStorage({
+                key: 'order',
+            })
         })
     },
     // 结账
@@ -211,7 +246,6 @@ Page({
                     imageOnTop: true
                 })
             } else {
-                console.log(new Date().getTime(), db.serverDate())
                 buy_orders.add({
                     data: {
                         orderStatus: 0, // 0 未支付  1 已支付  2 已完成   3 已退款  
@@ -226,10 +260,6 @@ Page({
                     wx.navigateTo({
                         url: '/pages/orderInfo/orderInfo?orderStatus=0&id=' + res._id,
                     })
-                    // app.globalData.tabIndex = 0
-                    // wx.switchTab({
-                    //     url: '/pages/order/order',
-                    // })
                 }).catch(error => {
                     console.log('error', error)
                 })
@@ -251,9 +281,6 @@ Page({
     },
     closeDialog2(event) {
         if (event.type === 'confirm') {
-            // wx.navigateTo({
-            //     url: '/pages/login/login',
-            // })
             wx.switchTab({
                 url: '/pages/user/user',
             })
@@ -262,4 +289,10 @@ Page({
             showWarnConfirm: false
         });
     },
+    // 跳转到详情页
+    pageToDetail(event) {
+        wx.navigateTo({
+            url: '/pages/foodDetail/foodDetail?foodId=' + event.currentTarget.dataset.id,
+        })
+    }
 });

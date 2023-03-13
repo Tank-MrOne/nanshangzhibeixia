@@ -1,0 +1,16 @@
+<!--pages/address/address.wxml-->
+<view class="address">
+    <view class="address_list {{address.length == 0 ? 'empty' :''}}">
+        <view class="empty" wx:if="{{address.length == 0}}">
+            <t-empty icon="location" t-class="empty-cls" description="一个地址都没有哦" />
+        </view>
+        <block wx:else>
+            <view class="list">
+
+            </view>
+        </block>
+    </view>
+    <view class="add_address">
+        新建收获地址
+    </view>
+</view>

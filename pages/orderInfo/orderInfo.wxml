@@ -2,7 +2,7 @@
 <view class="order_indo_page">
     <view class="view address_box">
         <view class="title">周周的零食店</view>
-        <view class="addressButton">
+        <view class="addressButton" bindtap="changeAddress">
             <view class="address">{{address?address:'请填写收获地址'}}</view>
             <t-icon name="chevron-right" size="48rpx" />
         </view>

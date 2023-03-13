@@ -6,13 +6,13 @@
         <view wx:for="{{categories}}" wx:key="index" class="section">
             <view class="title">{{item.title || item.label}}</view>
             <block wx:for="{{item.items}}" wx:key="idx" wx:for-item="cargo" wx:for-index="idx">
-                <view class="food_items">
+                <view class="food_items"  bindtap="pageToDetail" data-id="{{cargo.id}}">
                     <image class="image" src="{{cargo.img}}" mode="aspectFill" />
                     <view class="foodInfo">
                         <view class="info_title">{{cargo.label}}</view>
                         <view class="info_desc">{{cargo.desc}}</view>
                         <view class="info_taste" wx:if="{{cargo.specification.length}}">
-                            <view bindtap="choiceTaste"  data-cargo="{{idx}}" data-index="{{index}}" data-taste="{{idx2}}" class="taste {{cargo.choiceTaste === idx2 ? 'choice':''}}" wx:for="{{cargo.specification}}"  wx:key="idx2" wx:for-item="taste" wx:for-index="idx2">
+                            <view catchtap="choiceTaste"  data-cargo="{{idx}}" data-index="{{index}}" data-taste="{{idx2}}" class="taste {{cargo.choiceTaste === idx2 ? 'choice':''}}" wx:for="{{cargo.specification}}"  wx:key="idx2" wx:for-item="taste" wx:for-index="idx2">
                                 {{taste.taste}}
                             </view>
                         </view>
@@ -21,11 +21,11 @@
                                 <view class="text">￥</view>{{cargo.specification[cargo.choiceTaste].price}}
                             </view>
                             <view class="button">
-                                <view class="delete" bindtap="delFoodToOrder" data-cargo="{{cargo}}" data-index="{{index}}" data-choiceTaste="{{cargo.choiceTaste}}">
+                                <view class="delete" catchtap="delFoodToOrder" data-cargo="{{cargo}}" data-index="{{index}}" data-choiceTaste="{{cargo.choiceTaste}}">
                                     <t-icon name="minus-circle" size="48rpx" wx:if="{{cargo.tasteNum[cargo.choiceTaste] && cargo.tasteNum[cargo.choiceTaste]>0}}" />
                                 </view>
                                 <view class="num" wx:if="{{cargo.tasteNum[cargo.choiceTaste] && cargo.tasteNum[cargo.choiceTaste] > 0}}">{{cargo.tasteNum[cargo.choiceTaste]}}</view>
-                                <view class="add" bindtap="addFoodToOrder" data-cargo="{{cargo}}" data-index="{{index}}" data-choiceTaste="{{cargo.choiceTaste}}">
+                                <view class="add" catchtap="addFoodToOrder" data-cargo="{{cargo}}" data-index="{{index}}" data-choiceTaste="{{cargo.choiceTaste}}">
                                     <t-icon name="add-circle" size="48rpx" />
                                 </view>
                             </view>

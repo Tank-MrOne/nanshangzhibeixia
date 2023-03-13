@@ -22,7 +22,7 @@
                         </view>
                     </view>
                     <view class="line bottom">
-                        <t-button class="to_detail" variant="outline" bindtap="changeOrderInfo" data-order="{{item.orders}}">购物清单</t-button>
+                        <t-button class="to_detail" variant="outline" bindtap="changeOrderInfo" data-oid="{{item._id}}" data-order="{{item.orders}}">购物清单</t-button>
                     </view>
                 </view>
             </block>
@@ -148,15 +148,22 @@
         </t-tab-panel>
     </t-tabs>
     <t-dialog visible="{{showWarnConfirm}}" content="您当前还未授权登入，请先授权登入" confirm-btn="{{ { content: '授权登入', variant: 'base', theme: 'light' } }}" cancel-btn="取消" bind:confirm="closeDialog2" bind:cancel="closeDialog2" />
-    <t-dialog visible="{{showMultiTextAndTitle}}" title="订单详情" confirm-btn="{{ { content: '知道了', variant: 'base' } }}" bind:confirm="closeDialog">
+    <t-dialog visible="{{showMultiTextAndTitle}}" title="订单详情" button-layout="vertical" actions="{{[{ content: '知道了', variant: 'text', size:'extra-small' },{ content: '删除订单', variant: 'text', size:'extra-small',theme:'danger' },{ content: '修改订单', variant: 'base',theme:'primary' }]  }}" bind:action="closeDialog">
         <scroll-view slot="content" scroll-y class="long-content">
             <view class="content-container">
                 <view class="order_info" wx:for="{{orderInfo}}" wx:key="index">
                     <view class="title">{{item.label}}</view>
                     <view class="num">x {{item.orderNum}}</view>
-                    <view class="price">{{item.price * item.orderNum}}元</view>
+                    <view class="price">{{fn.computeMoney(item.specification[item.choiceTaste].price,item.orderNum)}}元</view>
                 </view>
             </view>
         </scroll-view>
     </t-dialog>
+    <wxs module="fn">
+        module.exports = {
+            computeMoney: function (money, num) {
+                return ((money * 1000) * num) / 1000
+            }
+        }
+    </wxs>
 </view>

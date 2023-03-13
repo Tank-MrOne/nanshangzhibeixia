@@ -34,6 +34,10 @@ Page({
             })
         })
     },
+    // 跳转到地址页
+    changeAddress(){
+
+    },
     changeRemarks() {
         remarks = this.data.remarks
         this.setData({

@@ -122,8 +122,6 @@ Page({
         })
     },
     onTapSwiper(el) {
-        console.log('index', el)
-        console.log('swiperListObj', this.data.swiperListObj[el.detail.index])
         wx.navigateTo({
             url: '/pages/foodDetail/foodDetail?foodId='+this.data.swiperListObj[el.detail.index].id,
         })
